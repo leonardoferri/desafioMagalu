@@ -1,0 +1,14 @@
+{
+  "apps": [
+    {
+      "name": "luiza_challenge",
+      "script": "index.js",
+      "error_file": "/mnt/log/api/luiza_challenge.err.log",
+      "out_file": "/mnt/log/api/luiza_challenge.out.log",
+      "merge_logs": true,
+      "log_type": "json",
+      "instances": "1",
+      "exec_mode": "cluster"
+    }
+  ]
+}
