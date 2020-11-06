@@ -94,3 +94,10 @@ Para executar os testes com cobertura e eslint, é só rodar o comando abaixo.
 ```
 npm run test - PARA RODAR O ESLINT E OS TESTES UNITÁRIOS DO MOCHA/CHAI (Cobertura não está em 100%)
 ```
+
+## OBS
+
+- A camada de login estava sendo feita com JWT, mas não consegui implementar devido a alguns erros locais,e afim de não compromoter dados e devido ao tempo, preferi deixar sem e garantir a qualidade na entrega.
+- /util é uma camada de log e authorization que implementei, se quiserem visualizar, fiquem a vontade.
+
+Qualquer dúvida, podem entrar em contato comigo :)
