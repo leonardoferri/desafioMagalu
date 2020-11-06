@@ -6,7 +6,6 @@ const factory = require('./factory');
 const config  = require('../../config');
 const util    = require('../../config/util');
 const repositoryMongoDb = require('../repository/mongoDb');
-const bcrypt = require('bcryptjs');
 
 const {
   luizaProductsService,

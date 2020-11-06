@@ -88,7 +88,6 @@ const luizaChallengeWrapper = ({
       const {
         name,
         email,
-        password,
       } = payload;
 
       const filter = {
@@ -100,9 +99,9 @@ const luizaChallengeWrapper = ({
       await repositoryMongoDb.collectionFactory.createOrUpdateWithWhere(
         filter,
         {
-          $set: { 
-                  name: name,
-                },
+          $set: {
+            name: name,
+          },
         },
         collectionName,
       );
@@ -178,10 +177,11 @@ const luizaChallengeWrapper = ({
       await repositoryMongoDb.collectionFactory.createOrUpdateWithWhere(
         filter,
         {
-          $pull: { 
+          $pull: {
             productList: {
               id: productId,
-          } },
+            },
+          },
         },
         collectionName,
       );

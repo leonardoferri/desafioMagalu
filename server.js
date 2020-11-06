@@ -1,7 +1,7 @@
 'use strict';
 
-const { Authorizing } = require('./util');
 const Hapi = require('@hapi/hapi');
+const { Authorizing } = require('./util');
 const config = require('./config');
 const routes = require('./v1/routes');
 const plugins = require('./plugins');

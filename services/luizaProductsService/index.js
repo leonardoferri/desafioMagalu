@@ -1,6 +1,7 @@
 'use strict';
 
 const deasync = require('deasync');
+const Boom = require('Boom');
 
 const luizaProductsService = ({
   config,
@@ -9,14 +10,14 @@ const luizaProductsService = ({
   const getProductsWithPage = (page) => {
     try {
       const {
-        luizaProductsService,
+        luizaProductsServiceName,
       } = config.services;
 
       let done = false;
       let retorno = null;
       axios.create({
-        baseURL: luizaProductsService,
-      }).get(`${luizaProductsService}/?page=${page}`).then((response) => {
+        baseURL: luizaProductsServiceName,
+      }).get(`${luizaProductsServiceName}/?page=${page}`).then((response) => {
         done = true;
         retorno = response;
       }).catch(() => {
@@ -38,7 +39,7 @@ const luizaProductsService = ({
   const getProductById = async (productId) => {
     try {
       const {
-        luizaProductsService,
+        luizaProductsServiceName,
       } = config.services;
 
       const resp = await axios.create({
@@ -46,7 +47,7 @@ const luizaProductsService = ({
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-      }).get(`${luizaProductsService}/${productId}/`, {
+      }).get(`${luizaProductsServiceName}/${productId}/`, {
         params: {
           productId: productId,
         },

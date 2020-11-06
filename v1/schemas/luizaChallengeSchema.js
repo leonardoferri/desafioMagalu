@@ -10,21 +10,21 @@ module.exports = {
     upsertCustomer: {
       name: Joi.string().required(),
       email: Joi.string()
-      .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
+        .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
     },
     upsertProduct: {
       email: Joi.string()
-      .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
-      productId : Joi.string().required(),
+        .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
+      productId: Joi.string().required(),
     },
     deleteCustomer: {
       email: Joi.string()
-      .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
+        .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
     },
     deleteProduct: {
       email: Joi.string()
-      .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
-      productId : Joi.string().required(),
-    }
+        .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
+      productId: Joi.string().required(),
+    },
   },
 };

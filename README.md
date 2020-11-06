@@ -10,9 +10,46 @@
 
 ## Dependencies
 
-Describe the main dependencies
+    "@hapi/hapi": "^17.9.0",
+    "@hapi/inert": "^5.2.0",
+    "@hapi/vision": "^5.5.2",
+    "aws-sdk": "^2.786.0",
+    "axios": "^0.21.0",
+    "bluebird": "^3.7.2",
+    "boom": "^7.3.0",
+    "deasync": "^0.1.13",
+    "dotenv": "^8.0.0",
+    "elasticsearch": "^16.7.1",
+    "hapi-alive": "^2.0.4",
+    "hapi-response-time": "^2.0.0",
+    "hapi-swaggered": "^3.0.2",
+    "hapi-swaggered-ui": "^3.0.1",
+    "http-status-codes": "^2.1.4",
+    "joi": "^14.3.1",
+    "memcached": "^2.2.2",
+    "mongodb": "^3.1.1",
+    "mongoose": "^5.10.12",
+    "ping": "^0.3.0",
+    "remove-accents": "^0.4.2",
+    "underscore": "^1.11.0",
+    "uuid": "^3.2.1",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.0"
+    "sinon": "^7.3.2",
+    "chai": "^4.1.2",
+    "depcheck": "^0.8.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "husky": "^2.3.0",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.17.1",
+    "nyc": "^14.1.1"
 
-### Serviços Internos
+### Internal Services
 
 1.  [API DE PÁGINAS](http://challenge-api.luizalabs.com/api/product/?page=<PAGINA>)
 2.  [API DE PRODUTOS](http://challenge-api.luizalabs.com/api/product/<ID>/)

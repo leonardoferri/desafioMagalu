@@ -3,5 +3,5 @@
 const luizaProductsService = require('./luizaProductsService');
 
 module.exports = dependencies => ({
-    luizaProductsService: luizaProductsService(dependencies),
+  luizaProductsService: luizaProductsService(dependencies),
 });
