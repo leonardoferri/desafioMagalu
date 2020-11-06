@@ -2,7 +2,7 @@
 
 const deasync = require('deasync');
 
-const { AWS } = require('pkg_sky_core');
+const { AWS } = require('../util');
 
 require('dotenv').config();
 

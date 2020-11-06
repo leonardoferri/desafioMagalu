@@ -1,6 +1,6 @@
 'use strict';
 
-const { ResponseHandler } = require('pkg_sky_core');
+const { ResponseHandler } = require('../../util');
 
 const luizaChallengeWrapper = (adapters, applicatioName) => {
 
@@ -92,11 +92,34 @@ const luizaChallengeWrapper = (adapters, applicatioName) => {
     });
   };
 
+  const deleteProduct = (request, reply) => {
+    const payload = {
+      ...request.query,
+      applicationName: applicatioName,
+    };
+    return adapters.deleteProduct({
+      payload,
+      onSuccess: (data) => {
+        ResponseHandler.successHandler({
+          payload, request, response: data,
+        });
+        return reply.response(data).code(200);
+      },
+      onError: (error) => {
+        ResponseHandler.errorHandler({
+          payload, request, error,
+        });
+        return reply.response(error).code(error.statusCode);
+      },
+    });
+  };
+
   return {
     getCustomer,
     upsertProduct,
     upsertCustomer,
     deleteCustomer,
+    deleteProduct,
   };
 };
 

@@ -1,6 +1,6 @@
 'use strict';
 
-const { Logger } = require('pkg_sky_core');
+const { Logger } = require('./util');
 const server = require('./server');
 
 const init = async () => {

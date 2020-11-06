@@ -1,6 +1,6 @@
 'use strict';
 
-const { Authorizing } = require('pkg_sky_core');
+const { Authorizing } = require('./util');
 const Hapi = require('@hapi/hapi');
 const config = require('./config');
 const routes = require('./v1/routes');

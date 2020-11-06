@@ -18,11 +18,15 @@ module.exports = dependencies => ({
     config: dependencies.config,
     repositoryMongoDb: dependencies.repositoryMongoDb,
     Boom: dependencies.Boom,
-    luizaProductsService: dependencies.luizaProductsService,
   }).upsertCustomer,
   deleteCustomer: luizaChallengeWrapper({
     config: dependencies.config,
     repositoryMongoDb: dependencies.repositoryMongoDb,
     Boom: dependencies.Boom,
   }).deleteCustomer,
+  deleteProduct: luizaChallengeWrapper({
+    config: dependencies.config,
+    repositoryMongoDb: dependencies.repositoryMongoDb,
+    Boom: dependencies.Boom,
+  }).deleteProduct,
 });

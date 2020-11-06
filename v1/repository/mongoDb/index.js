@@ -7,7 +7,7 @@ const config = require('../../../config');
 const collectionFactory = factory({
   db: mongo,
   collectionName: {
-    collectionDefault: config.mongo.collections.collectionDefault,
+    collectionCustomer: config.mongo.collections.collectionCustomer,
   },
   configConnection: {
     dbUrl: config.mongo.uri,

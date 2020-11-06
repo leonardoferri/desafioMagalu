@@ -14,22 +14,19 @@ const luizaChallengeWrapper = ({
   }) => {
     try {
 
-      const {
-        email,
-      } = payload;
-
-      const filter = { 
+      const { email } = payload;
+      const filter = {
         email: email,
       };
 
-      const collectionName = config.mongo.collections.collectionCustomer
+      const collectionName = config.mongo.collections.collectionCustomer;
 
-      const getCustomer = await repositoryMongoDb.collectionFactory.findMany(
+      const customer = await repositoryMongoDb.collectionFactory.findMany(
         filter,
         collectionName,
       );
 
-      return onSuccess(getCustomer);
+      return onSuccess(customer);
     } catch (errorCatch) {
       let error = errorCatch;
       if (errorCatch.output == null) {
@@ -51,24 +48,24 @@ const luizaChallengeWrapper = ({
         productId,
       } = payload;
 
-      const filter = { 
+      const filter = {
         email: email,
       };
 
-      const collectionName = config.mongo.collections.collectionCustomer
+      const collectionName = config.mongo.collections.collectionCustomer;
 
       const getProductByid = await luizaProductsService.getProductById(productId);
 
-      const createOrUpdateCustomer = await repositoryMongoDb.collectionFactory.createOrUpdateWithWhere(
+      await repositoryMongoDb.collectionFactory.createOrUpdateWithWhere(
         filter,
         {
           $addToSet: { productList: getProductByid },
         },
-          collectionName,
+        collectionName,
       );
 
       const response = {
-        message: "Mongo Atualizado com Sucesso!",
+        message: `Produto ${productId} inserido/atualizado com sucesso!`,
       };
 
       return onSuccess(response);
@@ -91,24 +88,27 @@ const luizaChallengeWrapper = ({
       const {
         name,
         email,
+        password,
       } = payload;
 
-      const filter = { 
+      const filter = {
         email: email,
       };
 
-      const collectionName = config.mongo.collections.collectionCustomer
+      const collectionName = config.mongo.collections.collectionCustomer;
 
-      const createOrUpdateCustomer = await repositoryMongoDb.collectionFactory.createOrUpdateWithWhere(
+      await repositoryMongoDb.collectionFactory.createOrUpdateWithWhere(
         filter,
-        { 
-          $set: { name: name}
+        {
+          $set: { 
+                  name: name,
+                },
         },
         collectionName,
       );
 
       const response = {
-        message: "Cliente inserido/atualizado com sucesso!",
+        message: `Cliente ${name} inserido/atualizado com sucesso!`,
       };
 
       return onSuccess(response);
@@ -132,19 +132,62 @@ const luizaChallengeWrapper = ({
         email,
       } = payload;
 
-      const filter = { 
+      const filter = {
         email: email,
       };
 
-      const collectionName = config.mongo.collections.collectionCustomer
+      const collectionName = config.mongo.collections.collectionCustomer;
 
-      const removeCustomer = await repositoryMongoDb.collectionFactory.removeOne(
+      await repositoryMongoDb.collectionFactory.removeOne(
         filter,
         collectionName,
       );
 
       const response = {
-        message: "Cliente Excluído com Sucesso!"
+        message: `Cliente ${email} Excluído com Sucesso!`,
+      };
+
+      return onSuccess(response);
+    } catch (errorCatch) {
+      let error = errorCatch;
+      if (errorCatch.output == null) {
+        error = Boom.badGateway(error);
+      }
+      return onError(error.output.payload);
+    }
+  };
+
+  const deleteProduct = async ({
+    payload,
+    onSuccess,
+    onError,
+  }) => {
+    try {
+
+      const {
+        email,
+        productId,
+      } = payload;
+
+      const filter = {
+        email: email,
+      };
+
+      const collectionName = config.mongo.collections.collectionCustomer;
+
+      await repositoryMongoDb.collectionFactory.createOrUpdateWithWhere(
+        filter,
+        {
+          $pull: { 
+            productList: {
+              id: productId,
+          } },
+        },
+        collectionName,
+      );
+
+      const response = {
+        message: `Produto ${productId} Excluído da Lista de Favoritos do Cliente ${email} com sucesso!`,
       };
 
       return onSuccess(response);
@@ -162,6 +205,7 @@ const luizaChallengeWrapper = ({
     upsertProduct,
     upsertCustomer,
     deleteCustomer,
+    deleteProduct,
   };
 
 };

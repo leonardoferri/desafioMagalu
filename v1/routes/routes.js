@@ -65,9 +65,26 @@ const deleteCustomer = {
   },
 };
 
+const deleteProduct = {
+  path: '/v1/luizaChallenge/product/delete',
+  method: 'DELETE',
+  config: {
+    tags: ['api'],
+    handler: controller.deleteProduct,
+    validate: {
+      options: {
+        allowUnknown: true,
+      },
+      query: luizaChallengeSchema.request.deleteProduct,
+    },
+  },
+};
+
 module.exports = {
   getCustomer,
   upsertProduct,
   upsertCustomer,
   deleteCustomer,
+  deleteProduct,
+  deleteProduct,
 };

@@ -24,4 +24,9 @@ module.exports = (adapters, config) => ({
     application.name,
     config,
   ).deleteCustomer,
+  deleteProduct: luizaChallengeController(
+    adapters,
+    application.name,
+    config,
+  ).deleteProduct,
 });

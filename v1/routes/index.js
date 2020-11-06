@@ -5,6 +5,7 @@ const {
   upsertProduct,
   upsertCustomer,
   deleteCustomer,
+  deleteProduct,
 } = require('./routes');
 
 module.exports = [
@@ -12,4 +13,5 @@ module.exports = [
   upsertProduct,
   upsertCustomer,
   deleteCustomer,
+  deleteProduct,
 ];
